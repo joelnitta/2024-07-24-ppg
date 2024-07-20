@@ -1,0 +1,230 @@
+---
+title: "PPG Workshop at IBC 2024"
+author: Joel H. Nitta
+format: revealjs
+---
+
+## Outline
+
+- World Ferns
+- Darwin Core (DwC)
+- PPG Editor
+
+# World Ferns
+
+## World Ferns (WF)
+
+- Taxonomic database for ferns and lycophytes maintained by Michael Hassler since 1994
+- 69,231 names total\*
+  - 13,141 accepted species
+  - 816 hybrids
+  - 953 accepted infraspecific taxa 
+  - **54,321 synonyms**
+
+::: {.aside}
+\*Version 24.7 (July 18th, 2024)
+:::
+
+---
+
+<https://www.worldplants.de/world-ferns/ferns-and-lycophytes-list>
+
+![](images/word_ferns.png)
+
+## Usage of World Ferns
+
+- The World Ferns database is very valuable because of its **comprehensive treatment of synonyms**
+- Used by
+  - [Catalog of Life](https://www.catalogueoflife.org/)
+  - [Pteridoportal](https://www.pteridoportal.org/portal/index.php)
+  - [Kew Plants of the World Online](https://powo.science.kew.org)
+  - [GBIF](https://www.gbif.org/) (via Catalog of Life)
+
+## Taxonomic treatment of WF
+
+- Mostly follows PPG I (2016)
+- But there have been many changes since
+- Maintained by MH, so all taxonomic decisions are his
+- We hope to **ease the burden** of maintaining a database of >60,000 names by working as a **community**
+
+## Database format of WF
+
+- A custom format using Microsoft Word
+- MH has kindly provided us with an exported version of the data (Excel spreadsheet)
+- We (PPG) are allowed to use World Ferns data under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license\*
+- I wrote custom R code to convert the World Ferns data to **Darwin Core (DwC)** format: <https://github.com/pteridogroup/ppg-import>
+
+::: {.aside}
+\*Version 19.4 (June 1st, 2024)
+:::
+
+# Darwin Core (DwC)
+
+## What is Darwin Core (DwC)?
+
+- A **standard** for taxonomic data
+- Actually part of a broader standard for **biodiversity data** (specimens, taxonomy, other collection metadata)
+- More info: <https://dwc.tdwg.org/>
+
+---
+
+![](https://docs.ropensci.org/dwctaxon/articles/dwca.png)
+
+## What is a "standard"?
+
+- Provides specifications for **how to format the data**
+  - Column names
+  - What goes in each column
+  - Example: `scientificName`
+
+---
+
+<https://dwc.tdwg.org/list/#dwc_scientificName>
+
+![](images/sci_name.png)
+
+## PPG uses DwC
+
+- The PPG database is a single datatable (a spreadsheet) in CSV (comma-separated values) format that conforms to DwC
+
+---
+
+![](images/ppg-csv-raw.png)
+
+## Why should we use a standard?
+
+- Facilitates **sharing of data** between databases
+
+- Databases that use DwC
+  - [GBIF](https://www.gbif.org/)
+  - [Catalog of Life](https://www.catalogueoflife.org/)
+  - many others...
+
+## DwC helps us *organize* data
+
+- We can have **expectations** about how the data are organized
+  - Synonyms should map to accepted names
+  - Lower taxonomic levels should map to higher ones
+- We can **validate** our data to make sure they meet the expectations (more on that soon...)
+
+## A flexible standard
+
+- Actually, DwC does not set everything in stone
+- Each database can decide
+  - **which columns** to use (ex: should `scientificName` include the author, or should the author be in its own column?)
+  - **which values** to allow (ex: what are valid taxonomic ranks to use?)
+
+## An R package to maintain and validate DwC
+
+::: {.columns}
+::: {.column width="50%"}
+- I developed the `dwctaxon` R package to help maintain and validate DwC
+
+- Handling taxonomic changes is not straightforward, **especially when synonyms are involved**
+:::
+::: {.column width="15%"}
+:::
+::: {.column width="35%"}
+![](https://docs.ropensci.org/dwctaxon/logo.png){width="250px"}
+:::
+:::
+
+<https://docs.ropensci.org/dwctaxon/>
+
+## Changing taxonomy is *complicated* {.smaller}
+
+Old version:
+
+- Accepted species 1: *Cephalomanes crassum*
+  - Synonym: *Trichomanes crassum*
+- Accepted species 2: *Cephalomanes densinervium*
+  - Synonym: *Trichomanes densinervium*
+
+::: {.fragment}
+New version (*C. crassum* → synonym of ***C. densinervium***):
+:::
+
+::: {.incremental}
+- Accepted species: ***Cephalomanes densinervium***
+  - Synonym 1: *Cephalomanes crassum*
+  - Synonym 2: *Trichomanes crassum*
+  - Synonym 3: *Trichomanes densinervium*
+:::
+
+::: {.fragment}
+`dwctaxon` can account for **all** synonyms
+:::
+
+## It is better to detect mistakes *early*
+
+- There are many possible mistakes with taxonomic data
+  - Misspelled names
+  - Incorrect accepted name of a synonym
+  - non-standard taxonomic status or rank, etc...
+
+## `dwctaxon` automates validation of taxonomic data
+
+```{r}
+#| echo: false
+#| label: dwctaxon-setup
+library(dwctaxon)
+library(dplyr)
+
+set.seed(12345)
+filmies_dirty <-
+  dct_filmies |>
+  # Change taxonomic status of one row to 'good'
+  dct_modify_row(taxonID = "54115096", taxonomicStatus = "good") |>
+  # Duplicate some rows at the end
+  bind_rows(tail(dct_filmies)) |>
+  # Insert bad values for `acceptedNameUsageID` of 5 random rows
+  rows_update(
+    tibble(
+      taxonID = sample(dct_filmies$taxonID, 5),
+      acceptedNameUsageID = sample(letters, 5)
+    ),
+    by = "taxonID"
+  )
+```
+
+```{r}
+#| label: dwctaxon-show
+#| error: true
+#| echo: true
+dct_validate(filmies_dirty)
+```
+
+<https://docs.ropensci.org/dwctaxon/articles/validation.html>
+
+---
+
+- We will use `dwctaxon` as part of the PPG editor app to facilitate **editing** and **validation** of PPG data
+- This is will help us maintain a **high-quality** taxonomic database with minimal manual intervention
+
+# PPG Editor
+
+## PPG II requires a new approach
+
+- PPG I used Google Sheets
+- This was OK for a small number of names (genus and above)...
+- But PPG II (Phase II, at species level) will include >60,000 names
+- **We can't handle all of these with a single Google Sheet**
+
+## Solution: `ppg-editor` custom web app
+
+- I am developing `ppg-editor`, a custom web app that will allow us to edit PPG **as a community** while minimizing errors in data entry
+- `ppg-editor` runs `dwctaxon`, but the user **does not need to know R**
+- The app is set up as a GUI (point and click interface)
+
+---
+
+<https://ppg-editor.ploomberapp.io>
+
+![](images/ppg-editor.png)
+
+## Hands-on session
+
+- The rest of the workshop will be a hands-on session showing you **how to use** `ppg-editor`
+
+- This is still in early development, so we aren't actually editing the real PPG database, instead we are using a test dataset
+  - You can see the test data at <https://github.com/joelnitta/ppg-test>
