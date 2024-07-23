@@ -404,11 +404,41 @@ Joel H. Nitta
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
+<li>PPG Phase II</li>
 <li>World Ferns</li>
 <li>Darwin Core (DwC)</li>
-<li>PPG Editor</li>
+<li><del>PPG Editor</del> WFO and Rhakhis</li>
 </ul>
 </section>
+<section>
+<section id="ppg-phase-ii" class="title-slide slide level1 center">
+<h1>PPG Phase II</h1>
+
+</section>
+<section id="ppg-phase-ii-1" class="slide level2">
+<h2>PPG Phase II</h2>
+<ul>
+<li><p>We have been working on Phase I (genus level and higher)</p></li>
+<li><p>During Phase II, we will develop the species-level taxonomy</p></li>
+<li><p>We will officially start on Phase II after publishing PPG II at the genus level and higher</p></li>
+</ul>
+</section>
+<section id="decision-making-process-for-ppg-phase-ii" class="slide level2">
+<h2>Decision making process for PPG Phase II</h2>
+<ul>
+<li><p>No community-wide voting (too many names!)</p></li>
+<li><p>Instead, establish committees for smaller groups (genera, families)</p></li>
+<li><p>Committees will edit the data directly</p></li>
+</ul>
+</section>
+<section id="data-for-phase-ii" class="slide level2">
+<h2>Data for Phase II</h2>
+<ul>
+<li><p>There are ca. 12,000 accepted species and <strong>60,000</strong> synonyms</p></li>
+<li><p>Compiling these data is a huge task!</p></li>
+<li><p>Fortunately, there is an existing database that we can use…</p></li>
+</ul>
+</section></section>
 <section>
 <section id="world-ferns" class="title-slide slide level1 center">
 <h1>World Ferns</h1>
@@ -443,7 +473,6 @@ Joel H. Nitta
 <ul>
 <li><a href="https://www.catalogueoflife.org/">Catalog of Life</a></li>
 <li><a href="https://www.pteridoportal.org/portal/index.php">Pteridoportal</a></li>
-<li><a href="https://powo.science.kew.org">Kew Plants of the World Online</a></li>
 <li><a href="https://www.gbif.org/">GBIF</a> (via Catalog of Life)</li>
 </ul></li>
 </ul>
@@ -618,13 +647,13 @@ Joel H. Nitta
 <section class="slide level2">
 
 <ul>
-<li>We will use <code>dwctaxon</code> as part of the PPG editor app to facilitate <strong>editing</strong> and <strong>validation</strong> of PPG data</li>
-<li>This is will help us maintain a <strong>high-quality</strong> taxonomic database with minimal manual intervention</li>
+<li>I <code>dwctaxon</code> to help edit the data from World Ferns to implement the changes we’ve voted on so far</li>
+<li>This is helps us maintain a <strong>high-quality</strong> taxonomic database with minimal manual intervention</li>
 </ul>
 </section></section>
 <section>
-<section id="ppg-editor" class="title-slide slide level1 center">
-<h1>PPG Editor</h1>
+<section id="ppg-editor-wfo-and-rhakhis" class="title-slide slide level1 center">
+<h1><del>PPG Editor</del> WFO and Rhakhis</h1>
 
 </section>
 <section id="ppg-ii-requires-a-new-approach" class="slide level2">
@@ -636,27 +665,112 @@ Joel H. Nitta
 <li><strong>We can’t handle all of these with a single Google Sheet</strong></li>
 </ul>
 </section>
-<section id="solution-ppg-editor-custom-web-app" class="slide level2">
-<h2>Solution: <code>ppg-editor</code> custom web app</h2>
+<section id="solution-a-web-app-for-editing-names" class="slide level2">
+<h2>Solution: a web app for editing names</h2>
 <ul>
-<li>I am developing <code>ppg-editor</code>, a custom web app that will allow us to edit PPG <strong>as a community</strong> while minimizing errors in data entry</li>
-<li><code>ppg-editor</code> runs <code>dwctaxon</code>, but the user <strong>does not need to know R</strong></li>
-<li>The app is set up as a GUI (point and click interface)</li>
+<li><p>By using a web app, PPG members can simultaneously edit the database while minimizing data entry errors</p></li>
+<li><p>I had been developing a custom web app called <code>ppg-editor</code>…</p></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p><a href="https://ppg-editor.ploomberapp.io" class="uri">https://ppg-editor.ploomberapp.io</a></p>
 
 <img data-src="images/ppg-editor.png" class="r-stretch"></section>
-<section id="hands-on-session" class="slide level2">
-<h2>Hands-on session</h2>
+<section class="slide level2">
+
 <ul>
-<li><p>The rest of the workshop will be a hands-on session showing you <strong>how to use</strong> <code>ppg-editor</code></p></li>
-<li><p>This is still in early development, so we aren’t actually editing the real PPG database, instead we are using a test dataset</p>
+<li>But then I realized that the <a href="https://rhakhis.rbge.info/">Rhakhis</a> tool of <a href="https://worldfloraonline.org/">World Flora Online</a> could work just as well (better?) and that it is probably a better option (they have a professional software development staff, I am just doing what I can as a researcher who happens to know some R)</li>
+</ul>
+</section>
+<section id="about-world-flora-online-wfo" class="slide level2">
+<h2>About <a href="https://worldfloraonline.org/">World Flora Online</a> (WFO)</h2>
 <ul>
-<li>You can see the test data at <a href="https://github.com/joelnitta/ppg-test" class="uri">https://github.com/joelnitta/ppg-test</a></li>
+<li><p>A taxonomic system for all vascular plants and bryophytes</p></li>
+<li><p>Each group maintained by a Taxonomic Expert Network (TEN)</p></li>
+<li><p>PPG is a TEN</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><a href="https://worldfloraonline.org/" class="uri">https://worldfloraonline.org/</a></p>
+
+<img data-src="images/wfo.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p><a href="https://about.worldfloraonline.org/tens/pteridophyte-phylogeny-group" class="uri">https://about.worldfloraonline.org/tens/pteridophyte-phylogeny-group</a></p>
+
+<img data-src="images/wfo-ppg.png" class="r-stretch"></section>
+<section id="ppg-and-wfo" class="slide level2">
+<h2>PPG and WFO</h2>
+<ul>
+<li><p>We have not yet provided our data to WFO</p></li>
+<li><p>We plan to submit PPG II data as soon as it is ready</p></li>
+</ul>
+</section>
+<section id="rhakhis" class="slide level2">
+<h2>Rhakhis</h2>
+<ul>
+<li>WFO maintains a webb app to edit taxonomic data in the WFO database called “Rhakhis”</li>
+</ul>
+<blockquote>
+<p>called Rhakhis, a Greek form of rachis, the ‘backbone’ of a leaf or inflorescence</p>
+</blockquote>
+
+<aside><div>
+<p>Hyam et al.&nbsp;2022. Biodiversity Information Science and Standards 6: e91432 <a href="https://doi.org/10.3897/biss.6.91432" class="uri">https://doi.org/10.3897/biss.6.91432</a></p>
+</div></aside></section>
+<section class="slide level2">
+
+<p><a href="https://list.worldfloraonline.org/rhakhis/ui/index.html" class="uri">https://list.worldfloraonline.org/rhakhis/ui/index.html</a></p>
+
+<img data-src="images/rhakhis.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p><a href="https://list.worldfloraonline.org/rhakhis/ui/index.html" class="uri">https://list.worldfloraonline.org/rhakhis/ui/index.html</a></p>
+
+<img data-src="images/rhakhis-2.png" class="r-stretch"></section>
+<section id="rhakhis-1" class="slide level2">
+<h2>Rhakhis</h2>
+<ul>
+<li>We will use Rhakhis for Phase II (the species-level taxonomy)</li>
+</ul>
+</section>
+<section id="using-rhakhis" class="slide level2">
+<h2>Using Rhakhis</h2>
+<div class="columns">
+<div class="column" style="width:80%;">
+<ul>
+<li>Anybody can log in using their <a href="https://orcid.org/">ORCID ID</a>
+<ul>
+<li>I can help get you set up with one today if you don’t have it yet</li>
 </ul></li>
+<li>In order to edit data, you need to be given permission for a particular group (likely genus or family)
+<ul>
+<li>We will be setting this up soon</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:20%;">
+<p><img data-src="images/orcid.png"></p>
+</div>
+</div>
+</section>
+<section id="using-rhakhis-1" class="slide level2">
+<h2>Using Rhakhis</h2>
+<ul>
+<li>There are two versions of Rhakhis
+<ul>
+<li>The “normal” editor</li>
+<li>The “sandbox” editor</li>
+</ul></li>
+<li>They are identical, except that any changes made in the “sandbox” will be erased overnight (it is for testing only)</li>
+</ul>
+
+<img data-src="images/staging.png" class="r-stretch"></section>
+<section id="using-rhakhis-2" class="slide level2">
+<h2>Using Rhakhis</h2>
+<ul>
+<li><p>I can demo using Rhakhis with the Sandbox version</p></li>
+<li><p>You can log in with your ORCID and browse the data, but not edit anything (yet)</p></li>
 </ul>
 <div class="footer footer-default">
 
