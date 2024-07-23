@@ -1,7 +1,8 @@
 ---
 title: "PPG Workshop at IBC 2024"
-author: Joel H. Nitta
 format: revealjs
+author: Joel H. Nitta
+footer: <a href="https://joelnitta.github.io/2024-07-24-ppg">https://joelnitta.github.io/2024-07-24-ppg</a>
 ---
 
 ## Outline
