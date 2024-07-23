@@ -6,9 +6,36 @@ format: revealjs
 
 ## Outline
 
+- PPG Phase II
 - World Ferns
 - Darwin Core (DwC)
-- PPG Editor
+- ~~PPG Editor~~ WFO and Rhakhis
+
+# PPG Phase II
+
+## PPG Phase II
+
+- We have been working on Phase I (genus level and higher)
+
+- During Phase II, we will develop the species-level taxonomy
+
+- We will officially start on Phase II after publishing PPG II at the genus level and higher
+
+## Decision making process for PPG Phase II
+
+- No community-wide voting (too many names!)
+
+- Instead, establish committees for smaller groups (genera, families)
+
+- Committees will edit the data directly
+
+## Data for Phase II
+
+- There are ca. 12,000 accepted species and **60,000** synonyms 
+
+- Compiling these data is a huge task!
+
+- Fortunately, there is an existing database that we can use...
 
 # World Ferns
 
@@ -37,7 +64,6 @@ format: revealjs
 - Used by
   - [Catalog of Life](https://www.catalogueoflife.org/)
   - [Pteridoportal](https://www.pteridoportal.org/portal/index.php)
-  - [Kew Plants of the World Online](https://powo.science.kew.org)
   - [GBIF](https://www.gbif.org/) (via Catalog of Life)
 
 ## Taxonomic treatment of WF
@@ -198,10 +224,10 @@ dct_validate(filmies_dirty)
 
 ---
 
-- We will use `dwctaxon` as part of the PPG editor app to facilitate **editing** and **validation** of PPG data
-- This is will help us maintain a **high-quality** taxonomic database with minimal manual intervention
+- I `dwctaxon` to help edit the data from World Ferns to implement the changes we've voted on so far
+- This is helps us maintain a **high-quality** taxonomic database with minimal manual intervention
 
-# PPG Editor
+# ~~PPG Editor~~ WFO and Rhakhis
 
 ## PPG II requires a new approach
 
@@ -210,21 +236,103 @@ dct_validate(filmies_dirty)
 - But PPG II (Phase II, at species level) will include >60,000 names
 - **We can't handle all of these with a single Google Sheet**
 
-## Solution: `ppg-editor` custom web app
+## Solution: a web app for editing names
 
-- I am developing `ppg-editor`, a custom web app that will allow us to edit PPG **as a community** while minimizing errors in data entry
-- `ppg-editor` runs `dwctaxon`, but the user **does not need to know R**
-- The app is set up as a GUI (point and click interface)
+- By using a web app, PPG members can simultaneously edit the database while minimizing data entry errors
+
+- I had been developing a custom web app called `ppg-editor`...
 
 ---
 
-<https://ppg-editor.ploomberapp.io>
-
 ![](images/ppg-editor.png)
 
-## Hands-on session
+---
 
-- The rest of the workshop will be a hands-on session showing you **how to use** `ppg-editor`
+- But then I realized that the [Rhakhis](https://rhakhis.rbge.info/) tool of [World Flora Online](https://worldfloraonline.org/) could work just as well (better?) and that it is probably a better option (they have a professional software development staff, I am just doing what I can as a researcher who happens to know some R)
 
-- This is still in early development, so we aren't actually editing the real PPG database, instead we are using a test dataset
-  - You can see the test data at <https://github.com/joelnitta/ppg-test>
+## About [World Flora Online](https://worldfloraonline.org/) (WFO)
+
+- A taxonomic system for all vascular plants and bryophytes
+
+- Each group maintained by a Taxonomic Expert Network (TEN)
+
+- PPG is a TEN
+
+---
+
+<https://worldfloraonline.org/>
+
+![](images/wfo.png)
+
+---
+
+<https://about.worldfloraonline.org/tens/pteridophyte-phylogeny-group>
+
+![](images/wfo-ppg.png)
+
+## PPG and WFO
+
+- We have not yet provided our data to WFO
+
+- We plan to submit PPG II data as soon as it is ready
+
+## Rhakhis
+
+- WFO maintains a webb app to edit taxonomic data in the WFO database called "Rhakhis"
+
+> called Rhakhis, a Greek form of rachis, the ‘backbone’ of a leaf or inflorescence
+
+::: {.aside}
+Hyam et al. 2022. Biodiversity Information Science and Standards 6: e91432 <https://doi.org/10.3897/biss.6.91432>
+:::
+
+---
+
+<https://list.worldfloraonline.org/rhakhis/ui/index.html>
+
+![](images/rhakhis.png)
+
+---
+
+<https://list.worldfloraonline.org/rhakhis/ui/index.html>
+
+![](images/rhakhis-2.png)
+
+## Rhakhis
+
+- We will use Rhakhis for Phase II (the species-level taxonomy)
+
+## Using Rhakhis
+
+:::: {.columns}
+
+::: {.column width="80%"}
+- Anybody can log in using their [ORCID ID](https://orcid.org/)
+  - I can help get you set up with one today if you don't have it yet
+
+- In order to edit data, you need to be given permission for a particular group (likely genus or family)
+  - We will be setting this up soon
+
+:::
+
+::: {.column width="20%"}
+![](images/orcid.png)
+:::
+
+::::
+
+## Using Rhakhis
+
+- There are two versions of Rhakhis
+  - The "normal" editor
+  - The "sandbox" editor
+
+- They are identical, except that any changes made in the "sandbox" will be erased overnight (it is for testing only)
+
+![](images/staging.png)
+
+## Using Rhakhis
+
+- I can demo using Rhakhis with the Sandbox version
+
+- You can log in with your ORCID and browse the data, but not edit anything (yet)
