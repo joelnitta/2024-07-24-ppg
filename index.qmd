@@ -1,16 +1,17 @@
 ---
 title: "PPG Workshop at IBC 2024"
+subtitlee: "PPG Phase II"
 format: revealjs
 author: Joel H. Nitta
 footer: <a href="https://joelnitta.github.io/2024-07-24-ppg">https://joelnitta.github.io/2024-07-24-ppg</a>
 ---
 
-## Outline
+## Outline: PPG Phase II
 
-- PPG Phase II
 - World Ferns
 - Darwin Core (DwC)
 - ~~PPG Editor~~ WFO and Rhakhis
+- Beyond Phase II
 
 # PPG Phase II
 
@@ -18,21 +19,26 @@ footer: <a href="https://joelnitta.github.io/2024-07-24-ppg">https://joelnitta.g
 
 - We have been working on Phase I (genus level and higher)
 
-- During Phase II, we will develop the species-level taxonomy
+- During Phase II, we will develop the **species-level** taxonomy
 
-- We will officially start on Phase II after publishing PPG II at the genus level and higher
+- We will officially start on Phase II after publishing PPG II at the genus level and higher (ca. Winter 2024)
 
 ## Decision making process for PPG Phase II
 
 - No community-wide voting (too many names!)
 
 - Instead, establish committees for smaller groups (genera, families)
+  - Need to consider how regional specialists fit into this model
 
-- Committees will edit the data directly
+- Committees will edit the data directly\*
+
+::: {.aside}
+\*[using Rhahkis](#rhakhis)
+:::
 
 ## Data for Phase II
 
-- There are ca. 12,000 accepted species and **60,000** synonyms 
+- There are more than 12,000 accepted species and **50,000** synonyms 
 
 - Compiling these data is a huge task!
 
@@ -134,13 +140,6 @@ footer: <a href="https://joelnitta.github.io/2024-07-24-ppg">https://joelnitta.g
   - Lower taxonomic levels should map to higher ones
 - We can **validate** our data to make sure they meet the expectations (more on that soon...)
 
-## A flexible standard
-
-- Actually, DwC does not set everything in stone
-- Each database can decide
-  - **which columns** to use (ex: should `scientificName` include the author, or should the author be in its own column?)
-  - **which values** to allow (ex: what are valid taxonomic ranks to use?)
-
 ## An R package to maintain and validate DwC
 
 ::: {.columns}
@@ -225,7 +224,7 @@ dct_validate(filmies_dirty)
 
 ---
 
-- I `dwctaxon` to help edit the data from World Ferns to implement the changes we've voted on so far
+- I use `dwctaxon` to help edit the data from World Ferns to implement the changes we've voted on so far
 - This is helps us maintain a **high-quality** taxonomic database with minimal manual intervention
 
 # ~~PPG Editor~~ WFO and Rhakhis
@@ -251,11 +250,13 @@ dct_validate(filmies_dirty)
 
 - But then I realized that the [Rhakhis](https://rhakhis.rbge.info/) tool of [World Flora Online](https://worldfloraonline.org/) could work just as well (better?) and that it is probably a better option (they have a professional software development staff, I am just doing what I can as a researcher who happens to know some R)
 
+![](images/wofo_abstract.png)
+
 ## About [World Flora Online](https://worldfloraonline.org/) (WFO)
 
 - A taxonomic system for all vascular plants and bryophytes
 
-- Each group maintained by a Taxonomic Expert Network (TEN)
+- Each group maintained by a **Taxonomic Expert Network (TEN)**
 
 - PPG is a TEN
 
@@ -275,13 +276,13 @@ dct_validate(filmies_dirty)
 
 - We have not yet provided our data to WFO
 
-- We plan to submit PPG II data as soon as it is ready
+- We plan to submit PPG II data as soon as it is ready (Fall/Winter 2024?)
 
 ## Rhakhis
 
 - WFO maintains a webb app to edit taxonomic data in the WFO database called "Rhakhis"
 
-> called Rhakhis, a Greek form of rachis, the ‘backbone’ of a leaf or inflorescence
+> Greek form of rachis, the ‘backbone’ of a leaf or inflorescence
 
 ::: {.aside}
 Hyam et al. 2022. Biodiversity Information Science and Standards 6: e91432 <https://doi.org/10.3897/biss.6.91432>
@@ -337,3 +338,24 @@ Hyam et al. 2022. Biodiversity Information Science and Standards 6: e91432 <http
 - I can demo using Rhakhis with the Sandbox version
 
 - You can log in with your ORCID and browse the data, but not edit anything (yet)
+
+## Beyond Phase II: Integrating PPG and FTOL
+
+- Work on a complete, species-level fern tree (FTOL v2) is in early stages
+  - current FTOL (v1.6.0): 5,785 species = ca. 50%
+
+- The ultimate goal is to have a **unified**, species-level database including the **taxonomy** and **tree**
+
+---
+
+<https://fernphy.github.io/>
+
+![](images/ftol.png)
+
+## Beyond Phase II: Integrating PPG and FTOL
+
+- We (organizers of PPG and GoFLAG) are planning a similar project to GoFLAG to complete FTOL
+  - Taxonomic experts can submit tissue samples and have priority access to resulting data
+  - We hope that collaboration with all PPG members will result in a **complete** FTOL!
+
+# Discussion
