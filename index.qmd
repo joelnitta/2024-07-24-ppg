@@ -4,7 +4,12 @@ subtitlee: "PPG Phase II"
 format: revealjs
 author: Joel H. Nitta
 footer: <a href="https://joelnitta.github.io/2024-07-24-ppg">https://joelnitta.github.io/2024-07-24-ppg</a>
+title-slide-attributes:
+  data-background-image: /images/qr.png
+  data-background-size: "15%"
+  data-background-position: "right 10% bottom 30%"
 ---
+
 
 ## Outline: PPG Phase II
 
@@ -339,6 +344,8 @@ Hyam et al. 2022. Biodiversity Information Science and Standards 6: e91432 <http
 
 - You can log in with your ORCID and browse the data, but not edit anything (yet)
 
+- Check the [user manual](https://plant-list-docs.rbge.info/rhakhis/)
+
 ## Beyond Phase II: Integrating PPG and FTOL
 
 - Work on a complete, species-level fern tree (FTOL v2) is in early stages
@@ -354,7 +361,7 @@ Hyam et al. 2022. Biodiversity Information Science and Standards 6: e91432 <http
 
 ## Beyond Phase II: Integrating PPG and FTOL
 
-- We (organizers of PPG and GoFLAG) are planning a similar project to GoFLAG to complete FTOL
+- We (organizers of PPG and [GoFLAG](https://flagellateplants.org/)) are planning a similar project to GoFLAG to complete FTOL
   - Taxonomic experts can submit tissue samples and have priority access to resulting data
   - We hope that collaboration with all PPG members will result in a **complete** FTOL!
 
