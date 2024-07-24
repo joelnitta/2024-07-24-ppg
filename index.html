@@ -401,13 +401,13 @@ Joel H. Nitta
 </div>
 
 </section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
+<section id="outline-ppg-phase-ii" class="slide level2">
+<h2>Outline: PPG Phase II</h2>
 <ul>
-<li>PPG Phase II</li>
 <li>World Ferns</li>
 <li>Darwin Core (DwC)</li>
 <li><del>PPG Editor</del> WFO and Rhakhis</li>
+<li>Beyond Phase II</li>
 </ul>
 </section>
 <section>
@@ -419,22 +419,28 @@ Joel H. Nitta
 <h2>PPG Phase II</h2>
 <ul>
 <li><p>We have been working on Phase I (genus level and higher)</p></li>
-<li><p>During Phase II, we will develop the species-level taxonomy</p></li>
-<li><p>We will officially start on Phase II after publishing PPG II at the genus level and higher</p></li>
+<li><p>During Phase II, we will develop the <strong>species-level</strong> taxonomy</p></li>
+<li><p>We will officially start on Phase II after publishing PPG II at the genus level and higher (ca. Winter 2024)</p></li>
 </ul>
 </section>
 <section id="decision-making-process-for-ppg-phase-ii" class="slide level2">
 <h2>Decision making process for PPG Phase II</h2>
 <ul>
 <li><p>No community-wide voting (too many names!)</p></li>
-<li><p>Instead, establish committees for smaller groups (genera, families)</p></li>
-<li><p>Committees will edit the data directly</p></li>
+<li><p>Instead, establish committees for smaller groups (genera, families)</p>
+<ul>
+<li>Need to consider how regional specialists fit into this model</li>
+</ul></li>
+<li><p>Committees will edit the data directly*</p></li>
 </ul>
-</section>
+
+<aside><div>
+<p>*<a href="#/rhakhis">using Rhahkis</a></p>
+</div></aside></section>
 <section id="data-for-phase-ii" class="slide level2">
 <h2>Data for Phase II</h2>
 <ul>
-<li><p>There are ca. 12,000 accepted species and <strong>60,000</strong> synonyms</p></li>
+<li><p>There are more than 12,000 accepted species and <strong>50,000</strong> synonyms</p></li>
 <li><p>Compiling these data is a huge task!</p></li>
 <li><p>Fortunately, there is an existing database that we can use…</p></li>
 </ul>
@@ -564,17 +570,6 @@ Joel H. Nitta
 <li>We can <strong>validate</strong> our data to make sure they meet the expectations (more on that soon…)</li>
 </ul>
 </section>
-<section id="a-flexible-standard" class="slide level2">
-<h2>A flexible standard</h2>
-<ul>
-<li>Actually, DwC does not set everything in stone</li>
-<li>Each database can decide
-<ul>
-<li><strong>which columns</strong> to use (ex: should <code>scientificName</code> include the author, or should the author be in its own column?)</li>
-<li><strong>which values</strong> to allow (ex: what are valid taxonomic ranks to use?)</li>
-</ul></li>
-</ul>
-</section>
 <section id="an-r-package-to-maintain-and-validate-dwc" class="slide level2">
 <h2>An R package to maintain and validate DwC</h2>
 <div class="columns">
@@ -647,7 +642,7 @@ Joel H. Nitta
 <section class="slide level2">
 
 <ul>
-<li>I <code>dwctaxon</code> to help edit the data from World Ferns to implement the changes we’ve voted on so far</li>
+<li>I use <code>dwctaxon</code> to help edit the data from World Ferns to implement the changes we’ve voted on so far</li>
 <li>This is helps us maintain a <strong>high-quality</strong> taxonomic database with minimal manual intervention</li>
 </ul>
 </section></section>
@@ -681,12 +676,13 @@ Joel H. Nitta
 <ul>
 <li>But then I realized that the <a href="https://rhakhis.rbge.info/">Rhakhis</a> tool of <a href="https://worldfloraonline.org/">World Flora Online</a> could work just as well (better?) and that it is probably a better option (they have a professional software development staff, I am just doing what I can as a researcher who happens to know some R)</li>
 </ul>
-</section>
+
+<img data-src="images/wofo_abstract.png" class="r-stretch"></section>
 <section id="about-world-flora-online-wfo" class="slide level2">
 <h2>About <a href="https://worldfloraonline.org/">World Flora Online</a> (WFO)</h2>
 <ul>
 <li><p>A taxonomic system for all vascular plants and bryophytes</p></li>
-<li><p>Each group maintained by a Taxonomic Expert Network (TEN)</p></li>
+<li><p>Each group maintained by a <strong>Taxonomic Expert Network (TEN)</strong></p></li>
 <li><p>PPG is a TEN</p></li>
 </ul>
 </section>
@@ -704,7 +700,7 @@ Joel H. Nitta
 <h2>PPG and WFO</h2>
 <ul>
 <li><p>We have not yet provided our data to WFO</p></li>
-<li><p>We plan to submit PPG II data as soon as it is ready</p></li>
+<li><p>We plan to submit PPG II data as soon as it is ready (Fall/Winter 2024?)</p></li>
 </ul>
 </section>
 <section id="rhakhis" class="slide level2">
@@ -713,7 +709,7 @@ Joel H. Nitta
 <li>WFO maintains a webb app to edit taxonomic data in the WFO database called “Rhakhis”</li>
 </ul>
 <blockquote>
-<p>called Rhakhis, a Greek form of rachis, the ‘backbone’ of a leaf or inflorescence</p>
+<p>Greek form of rachis, the ‘backbone’ of a leaf or inflorescence</p>
 </blockquote>
 
 <aside><div>
@@ -772,10 +768,38 @@ Joel H. Nitta
 <li><p>I can demo using Rhakhis with the Sandbox version</p></li>
 <li><p>You can log in with your ORCID and browse the data, but not edit anything (yet)</p></li>
 </ul>
+</section>
+<section id="beyond-phase-ii-integrating-ppg-and-ftol" class="slide level2">
+<h2>Beyond Phase II: Integrating PPG and FTOL</h2>
+<ul>
+<li>Work on a complete, species-level fern tree (FTOL v2) is in early stages
+<ul>
+<li>current FTOL (v1.6.0): 5,785 species = ca. 50%</li>
+</ul></li>
+<li>The ultimate goal is to have a <strong>unified</strong>, species-level database including the <strong>taxonomy</strong> and <strong>tree</strong></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><a href="https://fernphy.github.io/" class="uri">https://fernphy.github.io/</a></p>
+
+<img data-src="images/ftol.png" class="r-stretch"></section>
+<section id="beyond-phase-ii-integrating-ppg-and-ftol-1" class="slide level2">
+<h2>Beyond Phase II: Integrating PPG and FTOL</h2>
+<ul>
+<li>We (organizers of PPG and GoFLAG) are planning a similar project to GoFLAG to complete FTOL
+<ul>
+<li>Taxonomic experts can submit tissue samples and have priority access to resulting data</li>
+<li>We hope that collaboration with all PPG members will result in a <strong>complete</strong> FTOL!</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="discussion" class="title-slide slide level1 center">
+<h1>Discussion</h1>
 <div class="footer footer-default">
 <p><a href="https://joelnitta.github.io/2024-07-24-ppg">https://joelnitta.github.io/2024-07-24-ppg</a></p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
